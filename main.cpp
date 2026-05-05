@@ -122,6 +122,24 @@ void printPath(pair<int,int> exitcell,
 // }
 
 
+/* Plan
+- recursion
+- end at "base case" which would be considered the exit of the maze
+- other reasons to stop recursion:
+	- hit a wall
+	- node was already visited
+- try moving in all directions: up, down, left, right
+	- user recursion to find best path
+- track path with an array of visited nodes
+- if dfs returns true then there is a path
+
+start at entrance
+	begin search (possible recursive function)
+		check nodes in all directions
+		call search function again (only keep going if the next node is valid)
+
+	if you find the exit return dfs true
+*/
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
 // ----------------------------------------------------------
