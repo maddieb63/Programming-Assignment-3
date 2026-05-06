@@ -143,8 +143,8 @@ Returning true when the exit is found
 - if dfs returns true then there is a path
 
 pseudocode
-initilize vectors for: maze, visited, parent_r, parent_c
-initialize variables for exit and entrance
+parameters: vectors for: maze, visited, parent_r, parent_c
+variables for exit and entrance
 
 make base case n- when recursion is zero
 	exit row = r
@@ -158,6 +158,28 @@ go in all directions
 	get new coordinates
 recursive call back into dfs method
 */
+bool dfs(int r, int c,
+		const vector<vector<int>>& maze,
+		vector<vector<bool>>& visited,
+		vector<vector<int>>& parent_r,
+		vector<vector<int>>& parent_c,
+		int exit_r, int exit_c){
+
+	if (exit_r = r && c == exit_c) {
+		return true;
+	}
+
+//Maze
+int N = maze.size();
+int M = maze[0].size();
+
+//check out of bounds
+if (r < 0 || r >= N || c < 0 || c >= M) {
+	return false;
+}
+
+
+}
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
 // ----------------------------------------------------------
@@ -201,11 +223,11 @@ int main() {
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+    if (found) {
+         printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+    } else {
+         cout << "\nNo path exists.\n";
+     }
 
     return 0;
 }
