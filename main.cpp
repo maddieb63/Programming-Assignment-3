@@ -123,6 +123,15 @@ void printPath(pair<int,int> exitcell,
 
 
 /* Plan
+Must handle:
+Out-of-bounds checks
+Wall checks (maze[r][c] == 1)
+Visited checks
+Marking the current cell as visited
+Checking if (r, c) is the exit
+Exploring neighbors using dr and dc
+Assigning the parent before recursing
+Returning true when the exit is found
 - recursion
 - end at "base case" which would be considered the exit of the maze
 - other reasons to stop recursion:
@@ -133,12 +142,21 @@ void printPath(pair<int,int> exitcell,
 - track path with an array of visited nodes
 - if dfs returns true then there is a path
 
-start at entrance
-	begin search (possible recursive function)
-		check nodes in all directions
-		call search function again (only keep going if the next node is valid)
+pseudocode
+initilize vectors for: maze, visited, parent_r, parent_c
+initialize variables for exit and entrance
 
-	if you find the exit return dfs true
+make base case n- when recursion is zero
+	exit row = r
+	exit column = c
+
+check out of bounds
+check for wall or visited
+mark visited
+go in all directions
+	for loop 0->4
+	get new coordinates
+recursive call back into dfs method
 */
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
