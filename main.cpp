@@ -163,36 +163,41 @@ bool dfs(int r, int c,
 		vector<vector<bool>>& visited,
 		vector<vector<int>>& parent_r,
 		vector<vector<int>>& parent_c,
-		int exit_r, int exit_c){
+		int exit_r, int exit_c)
+{
 
-	if (exit_r = r && c == exit_c) {
+	if (exit_r == r && c == exit_c) {
 		return true;
 	}
 
 //Maze
-int N = maze.size();
-int M = maze[0].size();
+	int N = maze.size();
+	int M = maze[0].size();
 
 //check out of bounds
-if (r < 0 || r >= N || c < 0 || c >= M) {
-	return false;
-}
+	if (r < 0 || r >= N || c < 0 || c >= M) {
+		return false;
+	}
 
 // check if visited
-if (visited[r][c]) {
-return false;}
+	if (visited[r][c]) {
+		return false;}
 
 // search in four directions around node
-for (int i = 0; i < 4; i++) {
-	//new row = row + something[i]
-	//new column = column + something[i]
+	for (int i = 0; i < 4; i++) {
+		int nr = r + dr[i];
+		int nc = c + dr[i];
 
 	// check if a wall
+		if (maze[nr][nc] == 1) {
+			return false;}
 
 	// use recursion to call function again
-}
+		if (dfs(nr, nc, parent_r, parent_c, exit_r, exit_c)) {
+			return true;}
+	}
 
-
+return false;
 }
 // ----------------------------------------------------------
 // MAIN PROGRAM (students add DFS calls and logic)
@@ -231,7 +236,7 @@ int main() {
     // STUDENT WORK:
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
-    // bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
