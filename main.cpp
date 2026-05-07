@@ -178,6 +178,20 @@ if (r < 0 || r >= N || c < 0 || c >= M) {
 	return false;
 }
 
+// check if visited
+if (visited[r][c]) {
+return false;}
+
+// search in four directions around node
+for (int i = 0; i < 4; i++) {
+	//new row = row + something[i]
+	//new column = column + something[i]
+
+	// check if a wall
+
+	// use recursion to call function again
+}
+
 
 }
 // ----------------------------------------------------------
