@@ -117,47 +117,6 @@ void printPath(pair<int,int> exitcell,
 // STUDENTS IMPLEMENT DFS HERE
 // Add arguments, return type, and logic
 // ----------------------------------------------------------
-// bool dfs(……) {
-//     // Your code here
-// }
-
-
-/* Plan
-Must handle:
-Out-of-bounds checks
-Wall checks (maze[r][c] == 1)
-Visited checks
-Marking the current cell as visited
-Checking if (r, c) is the exit
-Exploring neighbors using dr and dc
-Assigning the parent before recursing
-Returning true when the exit is found
-- recursion
-- end at "base case" which would be considered the exit of the maze
-- other reasons to stop recursion:
-	- hit a wall
-	- node was already visited
-- try moving in all directions: up, down, left, right
-	- user recursion to find best path
-- track path with an array of visited nodes
-- if dfs returns true then there is a path
-
-pseudocode
-parameters: vectors for: maze, visited, parent_r, parent_c
-variables for exit and entrance
-
-make base case n- when recursion is zero
-	exit row = r
-	exit column = c
-
-check out of bounds
-check for wall or visited
-mark visited
-go in all directions
-	for loop 0->4
-	get new coordinates
-recursive call back into dfs method
-*/
 bool dfs(int r, int c,
 		const vector<vector<int>>& maze,
 		vector<vector<bool>>& visited,
@@ -171,7 +130,7 @@ bool dfs(int r, int c,
 		return true;
 	}
 
-//Maze
+//Maze dimensions
 	int N = maze.size();
 	int M = maze[0].size();
 
@@ -181,12 +140,10 @@ bool dfs(int r, int c,
 		return false;
 	}
 
-
 // check if visited
 	if (visited[r][c]) {
 		cout << "Visited node " << r << ", " << c << endl;
 		return false;}
-
 
 // mark as visited
 	visited[r][c] = true;
@@ -198,12 +155,11 @@ bool dfs(int r, int c,
 
 		cout << "Next node is " << nr << ", " << nc << endl;
 
-	// check if valid - is it at a wall or already visited
-		if (maze[nr][nc] != 1 && !visited[nr][nc]) {
+	// check if valid
+		if (nr >= 0 && nr < N && nc >= 0 && nc < M && maze[nr][nc] != 1 && !visited[nr][nc]) {
 			parent_r[nr][nc] = r;
 			parent_c[nr][nc] = c;
 
-	// use recursion to call function again
 			if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
 				return true;}
 		}
