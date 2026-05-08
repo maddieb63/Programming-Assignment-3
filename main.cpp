@@ -177,16 +177,16 @@ bool dfs(int r, int c,
 
 //check out of bounds
 	if (r < 0 || r >= N || c < 0 || c >= M) {
+		cout << "Out of bounds @ " << r << ", " << c << endl;
 		return false;
 	}
 
-	cout << "Out of bounds @ " << r << ", " << c << endl;
 
 // check if visited
 	if (visited[r][c]) {
+		cout << "Visited node " << r << ", " << c << endl;
 		return false;}
 
-	cout << "Visited node " << r << ", " << c << endl;
 
 // mark as visited
 	visited[r][c] = true;
@@ -200,9 +200,10 @@ bool dfs(int r, int c,
 
 	// check if a wall
 		if (maze[nr][nc] == 1) {
+			cout << "Wall hitter @ " << nr << ", " << nc << endl;
 			return false;}
 
-		cout << "Wall hitter @ " << nr << ", " << nc << endl;
+
 
 // use the parent setting array
 		parent_r[nr][nc] = r;
