@@ -165,6 +165,7 @@ bool dfs(int r, int c,
 		vector<vector<int>>& parent_c,
 		int exit_r, int exit_c)
 {
+	cout << "Starting @ " << r << ", " << c << endl;
 
 	if (exit_r == r && c == exit_c) {
 		return true;
@@ -179,9 +180,13 @@ bool dfs(int r, int c,
 		return false;
 	}
 
+	cout << "Out of bounds @ " << r << ", " << c << endl;
+
 // check if visited
 	if (visited[r][c]) {
 		return false;}
+
+	cout << "Visited node " << r << ", " << c << endl;
 
 // mark as visited
 	visited[r][c] = true;
@@ -191,9 +196,13 @@ bool dfs(int r, int c,
 		int nr = r + dr[i];
 		int nc = c + dc[i];
 
+		cout << "Next node is " << nr << ", " << nc << endl;
+
 	// check if a wall
 		if (maze[nr][nc] == 1) {
 			return false;}
+
+		cout << "Wall hitter @ " << nr << ", " << nc << endl;
 
 // use the parent setting array
 		parent_r[nr][nc] = r;
