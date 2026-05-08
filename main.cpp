@@ -198,20 +198,15 @@ bool dfs(int r, int c,
 
 		cout << "Next node is " << nr << ", " << nc << endl;
 
-	// check if a wall
-		if (maze[nr][nc] == 1) {
-			cout << "Wall hitter @ " << nr << ", " << nc << endl;
-			return false;}
-
-
-
-// use the parent setting array
-		parent_r[nr][nc] = r;
-		parent_c[nr][nc] = c;
+	// check if valid - is it at a wall or already visited
+		if (maze[nr][nc] != 1 && !visited[nr][nc]) {
+			parent_r[nr][nc] = r;
+			parent_c[nr][nc] = c;
 
 	// use recursion to call function again
-		if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
-			return true;}
+			if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
+				return true;}
+		}
 	}
 
 return false;
