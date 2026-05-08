@@ -183,17 +183,24 @@ bool dfs(int r, int c,
 	if (visited[r][c]) {
 		return false;}
 
+// mark as visited
+	visited[r][c] = true;
+
 // search in four directions around node
 	for (int i = 0; i < 4; i++) {
 		int nr = r + dr[i];
-		int nc = c + dr[i];
+		int nc = c + dc[i];
 
 	// check if a wall
 		if (maze[nr][nc] == 1) {
 			return false;}
 
+// use the parent setting array
+		parent_r[nr][nc] = r;
+		parent_c[nr][nc] = c;
+
 	// use recursion to call function again
-		if (dfs(nr, nc, parent_r, parent_c, exit_r, exit_c)) {
+		if (dfs(nr, nc, maze, visited, parent_r, parent_c, exit_r, exit_c)) {
 			return true;}
 	}
 
